@@ -1,8 +1,31 @@
-# React + Vite
+# React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## dark theme and light theme defination
 
-Currently, two official plugins are available:
+```css
+/* Define colors for light theme*/
+$light-bg-color: #ffffff;
+$light-text-color: #333333;
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+/* Define colors for dark theme*/
+$dark-bg-color: #333333;
+$dark-text-color: #ffffff;
+
+/*Define shared styles*/
+.app {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/*Define light theme*/
+.light {
+  background-color: $light-bg-color;
+  color: $light-text-color;
+}
+
+/*Define dark theme*/
+.dark {
+  background-color: $dark-bg-color;
+  color: $dark-text-color;
+}
+```

@@ -8,20 +8,28 @@ function LoadMore() {
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(0);
   const [errMsg, setErrorMsg] = useState("");
-  const url = `https://dummyjson.com/products?limit=20&skip=${
-    count === 0 ? 0 : count * 20
-  }`;
+  const [disableBtn, setDisableBtn] = useState(false);
+  const [totalItems, setTotalItems] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        const url = `https://dummyjson.com/products?limit=20&skip=${
+          count === 0 ? 0 : count * 20
+        }`;
         setLoading(true);
         const response = await axios.get(url);
         console.log(response.data);
+        console.log(count);
         if (response.data.products && response.data.products.length) {
-          setProducts(response.data.products);
-          setLoading(false);
+          if (count === 0) {
+            setProducts(response.data.products);
+            setTotalItems(response.data.total);
+          } else {
+            setProducts((prev) => [...prev, ...response.data.products]);
+          }
         }
+        setLoading(false);
       } catch (error) {
         console.log(error);
         setErrorMsg(error.message);
@@ -29,7 +37,17 @@ function LoadMore() {
       }
     };
     fetchProducts();
-  }, [url]);
+  }, [count]);
+
+  useEffect(() => {
+    if (totalItems !== null && products.length === totalItems) {
+      setDisableBtn(true);
+    }
+  }, [products, totalItems]);
+
+  const handleLoadMore = () => {
+    setCount(count + 1);
+  };
 
   if (loading) {
     return (
@@ -47,7 +65,6 @@ function LoadMore() {
     );
   }
 
-  console.log(products);
   return (
     <section className="wrapper">
       <section className="products">
@@ -66,7 +83,11 @@ function LoadMore() {
           : null}
       </section>
       <section>
-        <button className="load-more">Load More Products</button>
+        {!disableBtn ? (
+          <button onClick={handleLoadMore} className="load-more">
+            Load More Products
+          </button>
+        ) : null}
       </section>
     </section>
   );

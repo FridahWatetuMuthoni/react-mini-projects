@@ -1,0 +1,42 @@
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.inputs {
+  margin-bottom: 20px;
+}
+
+.inputs input {
+  border: none;
+  padding: 10px 20px;
+  box-shadow: 2px 2px 2px 2px gray;
+  outline: none;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+.inputs button {
+  padding: 11px 20px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: white;
+  background-color: magenta;
+  box-shadow: 2px 2px 2px 2px gray;
+}
+
+.inputs button:disabled,
+.inputs button[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

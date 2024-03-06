@@ -1,9 +1,9 @@
-import LoadMore from "./projects/Load-More-Data";
+import GithubProfileFinder from "./projects/Github Profile Finder";
 
 function App() {
   return (
     <section>
-      <LoadMore />
+      <GithubProfileFinder />
     </section>
   );
 }
