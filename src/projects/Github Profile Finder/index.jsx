@@ -20,6 +20,7 @@ function GithubProfileFinder() {
       }
     } catch (error) {
       setErrMsg(error.message);
+      setLoading(false);
       console.log(error);
     }
   };
@@ -35,7 +36,7 @@ function GithubProfileFinder() {
   if (loading) {
     return (
       <section className="wrapper">
-        <p>Data loading. Please wait ...</p>
+        <h1>Data loading. Please wait ...</h1>
       </section>
     );
   }
@@ -43,7 +44,7 @@ function GithubProfileFinder() {
   if (errMsg) {
     return (
       <section className="wrapper">
-        <p>{errMsg}</p>
+        <h1>{errMsg}</h1>
       </section>
     );
   }

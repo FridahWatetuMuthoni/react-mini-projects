@@ -1,9 +1,9 @@
-import GithubProfileFinder from "./projects/Github Profile Finder";
+import WeatherApp from "./projects/Weather-App";
 
 function App() {
   return (
     <section>
-      <GithubProfileFinder />
+      <WeatherApp />
     </section>
   );
 }
